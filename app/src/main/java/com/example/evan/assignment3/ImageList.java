@@ -5,7 +5,7 @@ package com.example.evan.assignment3;
  */
 
 public class ImageList {
-    public static String[] images;
+    public static String[] names;
     public static int[] resourceIds;
     public static String[] descriptions;
 
