@@ -33,17 +33,29 @@ public class MainActivity extends AppCompatActivity implements ListFragment.anim
             //have to add the placeHolder and the fragment to the fragmentTransaction
             fragmentTransaction.add(R.id.placeHolder, fragment);
 
-
-            fragmentTransaction.addToBackStack(null);
-
             //finally the fragmentTransaction needs to run the commit method to commit it.
             fragmentTransaction.commit();
         }
     }
 
+    //onAnimalSelected implementation method. stuff happens when you press an animal from the list
+    //this method takes the index of the animal pressed as an argument.
     @Override
     public void onAnimalSelected(int index) {
-        //using the onAnimalSelected implementation a toast is created with the index from the ImageList.
+        //a toast is created with the index from the ImageList.
         Toast.makeText(MainActivity.this, ImageList.names[index], Toast.LENGTH_SHORT).show();
+
+        //when the animal is selected we need to show a ViewImageFragment.
+        //This is basically the same as above except it creates the ViewImageFragment
+        ViewImageFragment fragment = new ViewImageFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        //this time the fragmentTransaction replaces the fragment instead of adding it
+        fragmentTransaction.replace(R.id.placeHolder, fragment);
+
+        //add the fragment to the backstack so that we can go back to the previous thing in the BackStack
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }
