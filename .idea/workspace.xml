@@ -7,9 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="240c03f2-0f68-4e15-9a90-38884e769b61" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/evan/assignment3/ListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/evan/assignment3/ListAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/evan/assignment3/ListFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/evan/assignment3/ListFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/evan/assignment3/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/evan/assignment3/MainActivity.java" />
     </list>
     <ignored path="Android-Fragments.iws" />
@@ -43,11 +40,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/evan/assignment3/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="24" column="92" selection-start-line="24" selection-start-column="92" selection-end-line="24" selection-end-column="92" />
+            <state relative-caret-position="204">
+              <caret line="16" column="63" selection-start-line="16" selection-start-column="63" selection-end-line="16" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -89,10 +86,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ListAdapter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ListAdapter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/evan/assignment3/ListAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
+            <state relative-caret-position="884">
               <caret line="57" column="45" selection-start-line="57" selection-start-column="45" selection-end-line="57" selection-end-column="45" />
               <folding>
                 <element signature="e#481#482#0" expanded="true" />
@@ -1833,9 +1830,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/evan/assignment3/ImageList.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/evan/assignment3/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/evan/assignment3/ListFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/evan/assignment3/ListAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/evan/assignment3/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -2495,11 +2492,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/evan/assignment3/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/evan/assignment3/ListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="24" column="92" selection-start-line="24" selection-start-column="92" selection-end-line="24" selection-end-column="92" />
-          <folding />
+        <state relative-caret-position="884">
+          <caret line="57" column="45" selection-start-line="57" selection-start-column="45" selection-end-line="57" selection-end-column="45" />
+          <folding>
+            <element signature="e#481#482#0" expanded="true" />
+            <element signature="e#517#518#0" expanded="true" />
+            <element signature="e#972#973#0" expanded="true" />
+            <element signature="e#1017#1018#0" expanded="true" />
+            <element signature="e#1776#1777#0" expanded="true" />
+            <element signature="e#1834#1835#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2511,18 +2515,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/evan/assignment3/ListAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/evan/assignment3/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="57" column="45" selection-start-line="57" selection-start-column="45" selection-end-line="57" selection-end-column="45" />
-          <folding>
-            <element signature="e#481#482#0" expanded="true" />
-            <element signature="e#517#518#0" expanded="true" />
-            <element signature="e#972#973#0" expanded="true" />
-            <element signature="e#1017#1018#0" expanded="true" />
-            <element signature="e#1776#1777#0" expanded="true" />
-            <element signature="e#1834#1835#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="204">
+          <caret line="16" column="63" selection-start-line="16" selection-start-column="63" selection-end-line="16" selection-end-column="63" />
+          <folding />
         </state>
       </provider>
     </entry>
