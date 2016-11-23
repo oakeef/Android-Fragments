@@ -11,6 +11,13 @@ import android.widget.TextView;
  */
 
 public class ListAdapter extends RecyclerView.Adapter {
+
+    private final ListFragment.animalSelectedInterface _Listener;
+
+    public ListAdapter(ListFragment.animalSelectedInterface listener) {
+        _Listener = listener;
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
@@ -29,24 +36,26 @@ public class ListAdapter extends RecyclerView.Adapter {
 
     private class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        private TextView mTextView;
-        private ImageView mImageView;
+        private TextView _TextView;
+        private ImageView _ImageView;
+        private int _Index;
 
         public ListViewHolder(View itemView){
             super(itemView);
-            mTextView = (TextView) itemView.findViewById(R.id.itemText);
-            mImageView = (ImageView) itemView.findViewById(R.id.itemImage);
+            _TextView = (TextView) itemView.findViewById(R.id.itemText);
+            _ImageView = (ImageView) itemView.findViewById(R.id.itemImage);
             itemView.setOnClickListener(this);
         }
         public void bindView(int position){
 
-            mTextView.setText(ImageList.names[position]);
-            mImageView.setImageResource(ImageList.resourceIds[position]);
+            _Index = position;
+            _TextView.setText(ImageList.names[position]);
+            _ImageView.setImageResource(ImageList.resourceIds[position]);
         }
 
         @Override
         public void onClick(View v) {
-
+            _Listener.onAnimalSelected(_Index);
         }
     }
 }
