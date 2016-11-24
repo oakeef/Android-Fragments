@@ -13,11 +13,25 @@ import android.view.ViewGroup;
  */
 
 public class ViewImageFragment extends Fragment {
+
+    public static final String KEY_ANIMAL_INDEX = "animal_index";
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        int index = getArguments().getInt(KEY_ANIMAL_INDEX);
+        getActivity().setTitle(ImageList.names[index]);
+
         View view = inflater.inflate(R.layout.fragment_viewimage, container, false);
         return view;
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        getActivity().setTitle(getResources().getString(R.string.app_name));
+
     }
 
 }

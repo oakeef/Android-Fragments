@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements ListFragment.animalSelectedInterface{
+    //create tags for fragments
+    public static final String LIST_FRAGMENT = "list_fragment";
+    public static final String VIEWIMAGE_FRAGMENT = "viewimage_fragment";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +19,8 @@ public class MainActivity extends AppCompatActivity implements ListFragment.anim
 
         //this is an object that keeps track of whether we have a fragment or not.
         //if it shows up null then the if statement below runs.
-        ListFragment savedFragment = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.placeHolder);
+        //finding by tag now instead of ID
+        ListFragment savedFragment = (ListFragment) getSupportFragmentManager().findFragmentByTag(LIST_FRAGMENT);
 
         //added this if statement so it doesn't keep creating new fragments on each rotation
         if (savedFragment == null) {
@@ -31,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements ListFragment.anim
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
             //have to add the placeHolder and the fragment to the fragmentTransaction
-            fragmentTransaction.add(R.id.placeHolder, fragment);
+            fragmentTransaction.add(R.id.placeHolder, fragment, LIST_FRAGMENT);
 
             //finally the fragmentTransaction needs to run the commit method to commit it.
             fragmentTransaction.commit();
@@ -48,11 +52,19 @@ public class MainActivity extends AppCompatActivity implements ListFragment.anim
         //when the animal is selected we need to show a ViewImageFragment.
         //This is basically the same as above except it creates the ViewImageFragment
         ViewImageFragment fragment = new ViewImageFragment();
+
+        //create new bundle and pass the index integer into the KEY_ANIMAL_INDEX
+        //this is because the fragment didn't like a custom cunstructor so it needs
+        //the info passed as a bundle
+        Bundle bundle = new Bundle();
+        bundle.putInt(ViewImageFragment.KEY_ANIMAL_INDEX, index);
+        fragment.setArguments(bundle);
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         //this time the fragmentTransaction replaces the fragment instead of adding it
-        fragmentTransaction.replace(R.id.placeHolder, fragment);
+        fragmentTransaction.replace(R.id.placeHolder, fragment, VIEWIMAGE_FRAGMENT);
 
         //add the fragment to the backstack so that we can go back to the previous thing in the BackStack
         fragmentTransaction.addToBackStack(null);
