@@ -16,30 +16,51 @@ public class MainActivity extends AppCompatActivity implements ListFragment.anim
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //create boolean variable to keep track of whether the device is a tablet or not
+        boolean isTablet = getResources().getBoolean(R.bool.is_tablet);
 
-        //this is an object that keeps track of whether we have a fragment or not.
-        //if it shows up null then the if statement below runs.
-        //finding by tag now instead of ID
-        ListFragment savedFragment = (ListFragment) getSupportFragmentManager().findFragmentByTag(LIST_FRAGMENT);
+        //if statement checks if the variable isTablet is not true, in which case it would create a
+        //ListFragment which is used in the phone sized view.
+        if(!isTablet){
+            //this is an object that keeps track of whether we have a fragment or not.
+            //if it shows up null then the if statement below runs.
+            //finding by tag now instead of ID
+            ListFragment savedFragment = (ListFragment) getSupportFragmentManager().findFragmentByTag(LIST_FRAGMENT);
 
-        //added this if statement so it doesn't keep creating new fragments on each rotation
-        if (savedFragment == null) {
+            //added this if statement so it doesn't keep creating new fragments on each rotation
+            if (savedFragment == null) {
 
-            //creates new ListFragment object called fragment
-            ListFragment fragment = new ListFragment();
+                //creates new ListFragment object called fragment
+                ListFragment fragment = new ListFragment();
 
-            //create FragmentManager object by using getFragmentManager method
-            FragmentManager fragmentManager = getSupportFragmentManager();
+                //create FragmentManager object by using getFragmentManager method
+                FragmentManager fragmentManager = getSupportFragmentManager();
 
-            //creates FragmentTransaction object by using the fragmentManager above's method beginTransaction
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                //creates FragmentTransaction object by using the fragmentManager above's method beginTransaction
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-            //have to add the placeHolder and the fragment to the fragmentTransaction
-            fragmentTransaction.add(R.id.placeHolder, fragment, LIST_FRAGMENT);
+                //have to add the placeHolder and the fragment to the fragmentTransaction
+                fragmentTransaction.add(R.id.placeHolder, fragment, LIST_FRAGMENT);
 
-            //finally the fragmentTransaction needs to run the commit method to commit it.
-            fragmentTransaction.commit();
+                //finally the fragmentTransaction needs to run the commit method to commit it.
+                fragmentTransaction.commit();
+            }
+        }else {
+            //this else is triggered if the device is designated a Tablet
+            //It does the same as above but creates a GridFragment instead of a ListFragment
+            GridFragment savedFragment = (GridFragment) getSupportFragmentManager().findFragmentByTag(LIST_FRAGMENT);
+
+            if (savedFragment == null) {
+
+                GridFragment fragment = new GridFragment();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.add(R.id.placeHolder, fragment, LIST_FRAGMENT);
+                fragmentTransaction.commit();
+            }
         }
+
+
     }
 
     //onAnimalSelected implementation method. stuff happens when you press an animal from the list
@@ -54,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements ListFragment.anim
         ViewImageFragment fragment = new ViewImageFragment();
 
         //create new bundle and pass the index integer into the KEY_ANIMAL_INDEX
-        //this is because the fragment didn't like a custom cunstructor so it needs
+        //this is because the fragment didn't like a custom constructor so it needs
         //the info passed as a bundle
         Bundle bundle = new Bundle();
         bundle.putInt(ViewImageFragment.KEY_ANIMAL_INDEX, index);
