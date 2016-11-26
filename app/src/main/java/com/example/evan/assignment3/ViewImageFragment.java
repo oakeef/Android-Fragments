@@ -35,7 +35,6 @@ public class ViewImageFragment extends Fragment {
     }
 
 
-
     @Override
     public void onStop(){
         super.onStop();

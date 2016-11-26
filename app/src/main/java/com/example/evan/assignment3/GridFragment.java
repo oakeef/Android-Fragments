@@ -43,7 +43,7 @@ public class GridFragment extends Fragment {
         //found a good tutorial that explained how dp is calculated and helped me bigtime with this.
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
         float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
-        int numColumns = (int) (dpWidth /200);
+        int numColumns = (int) (dpWidth / 200);
 
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), numColumns);
         recyclerView.setLayoutManager(layoutManager);
