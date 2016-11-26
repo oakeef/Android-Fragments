@@ -93,9 +93,4 @@ public class MainActivity extends AppCompatActivity
         fragmentTransaction.commit();
     }
 
-    //implemented from GridFragment
-    @Override
-    public void onGridAnimalSelected(int index) {
-
-    }
 }

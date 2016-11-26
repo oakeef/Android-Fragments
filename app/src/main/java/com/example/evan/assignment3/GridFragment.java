@@ -19,7 +19,7 @@ import static com.example.evan.assignment3.R.id.RecyclerView;
 public class GridFragment extends Fragment {
     public interface animalSelectedInterface{
 
-        void onGridAnimalSelected(int index);
+        void onAnimalSelected(int index);
 
     }
 

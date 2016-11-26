@@ -12,24 +12,18 @@ public class GridAdapter extends RecyclerAdapter {
 
     public GridAdapter(GridFragment.animalSelectedInterface listener) {
         _Listener = listener;
-
     }
-
 
 
     @Override
     protected int getLayoutId() {
-
         return R.layout.grid_item;
-
     }
-
 
 
     @Override
     protected void onAnimalSelected(int index) {
-        _Listener.onGridAnimalSelected(index);
-
+        _Listener.onAnimalSelected(index);
     }
 
 }
