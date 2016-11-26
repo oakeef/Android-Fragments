@@ -1,32 +1,31 @@
 package com.example.evan.assignment3;
 
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import static com.example.evan.assignment3.R.id.RecyclerView;
 
 /**
- * Created by Evan on 11/21/2016.
+ * Created by Evan on 11/25/2016.
  */
 
-public class ListFragment extends Fragment {
-
+public class GridFragment extends Fragment {
     public interface animalSelectedInterface{
 
-        void onAnimalSelected(int index);
+        void onGridAnimalSelected(int index);
 
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
 
         animalSelectedInterface listener = (animalSelectedInterface) getActivity();
 
@@ -36,16 +35,17 @@ public class ListFragment extends Fragment {
         //create a RecyclerView object and cast it as a RecyclerView.
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.RecyclerView);
 
-        //create a ListAdapter object to add to the recyclerView
-        ListAdapter listAdapter = new ListAdapter(listener);
+        //replace listAdapter from ListFragment to gridAdapter
+        GridAdapter gridAdapter = new GridAdapter(listener);
+        recyclerView.setAdapter(gridAdapter);
 
-        //use the setAdapter method to set the listAdapter created above as the adapter for this object
-        recyclerView.setAdapter(listAdapter);
+        //had to learn a lot about dp and how android deals with display sizes and pixels to get this part
+        //found a good tutorial that explained how dp is calculated and helped me bigtime with this.
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
+        int numColumns = (int) (dpWidth /200);
 
-        //create a LayoutManager object to add to the recyclerView
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-
-        //set the recyclerView LayoutManager to the one just created.
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), numColumns);
         recyclerView.setLayoutManager(layoutManager);
 
         return view;

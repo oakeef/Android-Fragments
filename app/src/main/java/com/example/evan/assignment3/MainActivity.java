@@ -7,7 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements ListFragment.animalSelectedInterface{
+public class MainActivity extends AppCompatActivity
+        implements ListFragment.animalSelectedInterface, GridFragment.animalSelectedInterface {
     //create tags for fragments
     public static final String LIST_FRAGMENT = "list_fragment";
     public static final String VIEWIMAGE_FRAGMENT = "viewimage_fragment";
@@ -67,12 +68,11 @@ public class MainActivity extends AppCompatActivity implements ListFragment.anim
     //this method takes the index of the animal pressed as an argument.
     @Override
     public void onAnimalSelected(int index) {
-        //a toast is created with the index from the ImageList.
-        Toast.makeText(MainActivity.this, ImageList.names[index], Toast.LENGTH_SHORT).show();
 
         //when the animal is selected we need to show a ViewImageFragment.
         //This is basically the same as above except it creates the ViewImageFragment
         ViewImageFragment fragment = new ViewImageFragment();
+
 
         //create new bundle and pass the index integer into the KEY_ANIMAL_INDEX
         //this is because the fragment didn't like a custom constructor so it needs
@@ -87,8 +87,15 @@ public class MainActivity extends AppCompatActivity implements ListFragment.anim
         //this time the fragmentTransaction replaces the fragment instead of adding it
         fragmentTransaction.replace(R.id.placeHolder, fragment, VIEWIMAGE_FRAGMENT);
 
+
         //add the fragment to the backstack so that we can go back to the previous thing in the BackStack
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    //implemented from GridFragment
+    @Override
+    public void onGridAnimalSelected(int index) {
+
     }
 }
