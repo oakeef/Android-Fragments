@@ -1,6 +1,5 @@
 package com.example.evan.assignment3;
 
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -28,10 +27,11 @@ public class ViewImageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         int index = getArguments().getInt(KEY_ANIMAL_INDEX);
-        ImageView image = new ImageView(getActivity());
-        image.setImageResource(ImageList.resourceIds[index]);
-        return image;
+        int img = ImageList.resourceIds[index];
 
+        ImageView image = new ImageView(getActivity());
+        image.setImageResource(img);
+        return image;
     }
 
 

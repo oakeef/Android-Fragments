@@ -1,22 +1,26 @@
 package com.example.evan.assignment3;
 
-
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements ListFragment.animalSelectedInterface, GridFragment.animalSelectedInterface {
+
     //create tags for fragments
     public static final String LIST_FRAGMENT = "list_fragment";
     public static final String VIEWIMAGE_FRAGMENT = "viewimage_fragment";
+
+    //create shared preferences
+    private SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         //create boolean variable to keep track of whether the device is a tablet or not
         boolean isTablet = getResources().getBoolean(R.bool.is_tablet);
 
@@ -45,7 +49,7 @@ public class MainActivity extends AppCompatActivity
 
                 //finally the fragmentTransaction needs to run the commit method to commit it.
                 fragmentTransaction.commit();
-            }
+            }//end inner if
         }else {
             //this else is triggered if the device is designated a Tablet
             //It does the same as above but creates a GridFragment instead of a ListFragment
@@ -58,21 +62,23 @@ public class MainActivity extends AppCompatActivity
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.add(R.id.placeHolder, fragment, LIST_FRAGMENT);
                 fragmentTransaction.commit();
-            }
-        }
+            }//end inner if
+        }//end else
 
-
-    }
+    }//end onCreate
 
     //onAnimalSelected implementation method. stuff happens when you press an animal from the list
     //this method takes the index of the animal pressed as an argument.
     @Override
     public void onAnimalSelected(int index) {
 
+        //start using the shared preferences
+        prefs = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
         //when the animal is selected we need to show a ViewImageFragment.
         //This is basically the same as above except it creates the ViewImageFragment
         ViewImageFragment fragment = new ViewImageFragment();
-
 
         //create new bundle and pass the index integer into the KEY_ANIMAL_INDEX
         //this is because the fragment didn't like a custom constructor so it needs
@@ -91,6 +97,6 @@ public class MainActivity extends AppCompatActivity
         //add the fragment to the backstack so that we can go back to the previous thing in the BackStack
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
-    }
+    }//end onAminalSelected
 
-}
+}//end class

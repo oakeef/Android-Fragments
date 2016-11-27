@@ -1,4 +1,22 @@
 <resources>
     <string name="app_name">Assignment3</string>
     <string name="text">Text</string>
+    <string name="bear">Bear</string>
+    <string name="frog">Frog</string>
+    <string name="hedgehog">Hedgehog</string>
+    <string name="lion">Lion</string>
+    <string name="pig">Pig</string>
+    <string name="red_panda">Red Panda</string>
+    <string name="dog">Dog</string>
+
+
+    <string-array name="animals">
+        <item>@string/bear</item>
+        <item>@string/frog</item>
+        <item>@string/hedgehog</item>
+        <item>@string/lion</item>
+        <item>@string/pig</item>
+        <item>@string/red_panda</item>
+        <item>@string/dog</item>
+    </string-array>
 </resources>
