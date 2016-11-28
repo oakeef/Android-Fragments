@@ -1,6 +1,8 @@
 package com.example.evan.assignment3;
 
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +12,12 @@ public class MainActivity extends AppCompatActivity
         implements ListFragment.animalSelectedInterface, GridFragment.animalSelectedInterface {
 
     //create tags for fragments
-    public static final String LIST_FRAGMENT = "list_fragment";
-    public static final String VIEWIMAGE_FRAGMENT = "viewimage_fragment";
+    private static final String LIST_FRAGMENT = "list_fragment";
+    private static final String VIEWIMAGE_FRAGMENT = "viewimage_fragment";
+    private static final String SELECTED_INDEX = "selected_index";
 
     //create shared preferences
-    private SharedPreferences prefs;
+    public static SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +75,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onAnimalSelected(int index) {
 
+        //take index as a string to add to SharedPreferences
+        String indexAsString = String.valueOf(index);
         //start using the shared preferences
         prefs = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(SELECTED_INDEX, indexAsString);
+        editor.apply();
 
         //when the animal is selected we need to show a ViewImageFragment.
         //This is basically the same as above except it creates the ViewImageFragment

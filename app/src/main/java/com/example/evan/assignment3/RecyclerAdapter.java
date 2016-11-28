@@ -1,6 +1,7 @@
 package com.example.evan.assignment3;
 
-import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +16,6 @@ import android.widget.TextView;
 //created this class as a generic adapter as to not repeat code.
 //made it abstract so that it can be a parent class to other adapters
 public abstract class RecyclerAdapter extends RecyclerView.Adapter {
-
     
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
@@ -29,6 +29,8 @@ public abstract class RecyclerAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position){
         ((ListViewHolder) holder).bindView(position);
+
+
     }
 
     @Override
@@ -58,6 +60,8 @@ public abstract class RecyclerAdapter extends RecyclerView.Adapter {
         @Override
         public void onClick(View v) {
             onAnimalSelected(_Index);
+            _TextView.setTextColor(Color.parseColor("#00aaff"));
+
         }
     }
 
